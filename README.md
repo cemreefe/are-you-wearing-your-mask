@@ -2,6 +2,8 @@
 
 In this project we aim to understand how people's mask usage habits change in Istanbul, during the Covid-19 outbreak. As of 15th of March, the project is still under development and we aim to complete it before the patient count hits 100. 
 
+![people detected using opencv](https://github.com/cemreefe/are-you-wearing-your-mask/blob/master/collage.jpg)
+
 ## The why
 
   - This data can be used to track public awareness and how different social event affect mask usage.
@@ -17,5 +19,5 @@ In this project we aim to understand how people's mask usage habits change in Is
   - Classify faces as either "wearing a mask" or "not wearing a mask"
   - Play around with the data, mark important events, turning points and relate them to real world events
 
-![people detected using opencv](https://github.com/cemreefe/are-you-wearing-your-mask/collage.jpg)
+
 
