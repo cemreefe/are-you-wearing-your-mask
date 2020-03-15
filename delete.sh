@@ -1,0 +1,1 @@
+rm peep/*; rm pairs/*/*;
