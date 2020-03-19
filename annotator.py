@@ -1,14 +1,33 @@
-#dependencies: 
-#*pillow
-#*opencv
-#*tkinter
+# dependencies: 
+# *pillow
+# *opencv
+# *tkinter
+
+# no error handling implemented yet.
+
+# COMMANDS:
+# s:	wearing a mask
+# d:	not wearing a mask
+# a:	others
+# save:	save to label_<timestamp>.txt
+# load	<filename>: load from labels/<filename>
+# exit:	exit
+
+# PS: everytime a label is entered, the current csvs is saved to labels/save.txt
+# so that the file can be used as a recovery option. In order not to lose your recovery data, 
+# directly enter the "load" command upon entering the application. 
+# Any other command will result in loss of all recovery data.
+
 
 import cv2
 import time
+import subprocess
 from tkinter import *
 from PIL import Image
 from PIL import ImageTk
 
+
+subprocess.run(["mkdir", "labels"])
 
 csvs = ""
 manual = "a: other / s: no mask / d: mask / c: back / save"
@@ -20,7 +39,12 @@ w_=130
 h =600
 h_=0
 
-labels = []
+labeldic = {
+	"0": "s",
+	"1": "d",
+	"2": "a"
+}
+
 
 window.title("Simplest Image Labeler")
 window.geometry('{}x{}'.format(w+w_,h+h_))
@@ -30,12 +54,29 @@ canvas.pack()
 
 u=3 
 i=0 
+loadinit = 0
+
+#remove last line from string
+def rll(s):
+	return s[:s.rfind('\n')]
+
+def file2hist(s):
+	return s.replace(",0",": s").replace(",1",": d").replace(",2",": a")
 
 def loadimg(i):
-	img2 = Image.open("peep/p{:06d}.jpg".format(i))
-	img2 = img2.resize((img2.size[0]*u, img2.size[1]*u),Image.NEAREST)
-	imgtk2 = ImageTk.PhotoImage(img2) 
-	return imgtk2
+	try:
+		img2 = Image.open("peep/p{:06d}.jpg".format(i))
+		img2 = img2.resize((img2.size[0]*u, img2.size[1]*u),Image.NEAREST)
+		imgtk2 = ImageTk.PhotoImage(img2) 
+		return imgtk2
+	except:
+		timestamp = int(time.time()//1)
+		f = open("FINAL_{}.txt".format(timestamp),"w+")
+		f.write(csvs)
+		f.close()
+		lbl.configure(text= "Congrats! Saved to FINAL_{}.txt".format(timestamp))
+		set_text("")
+
 
 imgtk = loadimg(i) 
 
@@ -72,30 +113,31 @@ def clicked():
 	global csvs
 	global imgtk
 	global i
-	global labels
+
+	global loadinit
 
 	imp = txt.get()
 
 	#a: back
 	if imp == "a":
-		csvs += repr(i) + ",	" "2\n"
-		labels.append(imp)
+		csvs += repr(i) + "," "2\n"
+
 		lbl.configure(text= "a: other / s: no mask / d: mask / c: back / save")
 		set_text("")
 		i+=1
 
 	#s: no mask
 	elif imp == "s":
-		csvs += repr(i) + ",	" "0\n"
-		labels.append(imp)
+		csvs += repr(i) + "," "0\n"
+
 		lbl.configure(text= "a: other / s: no mask / d: mask / c: back / save")
 		set_text("")
 		i+=1
 
 	#d: mask
 	elif imp == "d":
-		csvs += repr(i) + ",	" "1\n"
-		labels.append(imp)
+		csvs += repr(i) + "," "1\n"
+
 		lbl.configure(text= "a: other / s: no mask / d: mask / c: back / save")
 		set_text("")
 		i+=1
@@ -103,10 +145,12 @@ def clicked():
 	#c: go back
 	elif imp == "c":
 		if i!=0:
-			csvs = csvs[:csvs.rfind("\n")+1]
-			labels = labels[:-1]
+			csvs = rll(rll(csvs))+"\n"
+
+			prevlbl = labeldic[csvs.split(",")[-1][0]]
 			i-=1
-			lbl.configure(text= "Label this image again. (you entered:{})".format(labels[i-1]))
+			print(repr(i) + " " + repr(loadinit))
+			lbl.configure(text= "Label this image again. (you entered:{})".format(prevlbl))
 			set_text("")
 		else:
 			lbl.configure(text= "Can't go back, this is the first image.")
@@ -114,7 +158,7 @@ def clicked():
 
 	elif imp == "save":
 		timestamp = int(time.time()//1)
-		f = open("labels_{}.txt".format(timestamp),"w+")
+		f = open("/labels/labels_{}.txt".format(timestamp),"w+")
 		f.write(csvs)
 		f.close()
 		lbl.configure(text= "Saved to labels_{}.txt".format(timestamp))
@@ -131,12 +175,32 @@ def clicked():
 		f.close()
 		exit()
 
+	elif imp[:4] == "load":
+
+		lines, last_line, filename = "","","save.txt"
+
+		if not len(imp.split()) == 1:
+			print(imp.split())
+			filename = imp.split()[1]
+
+		with open('labels/{}'.format(filename), 'r') as s:
+			csvs  = s.read()
+			csvs  = csvs
+			lines = csvs.splitlines()
+			last_line = lines[-1]
+		s.close()
+
+		loadinit = int(last_line.split(",")[0])
+		i = loadinit+1
+		lbl.configure(text= "Loaded {} labels from \"{}\"".format(i-1, filename))
+		set_text("")
+
 	else:
 		lbl.configure(text= manual)
 		set_text("")
 
 
-	f = open("save.txt","w+")
+	f = open("labels/save.txt","w+")
 	f.write(csvs)
 	f.close()
 
@@ -148,7 +212,7 @@ def clicked():
 	canvas.create_image(w//2,h//2-50, anchor=CENTER, image=imgtk)
 	canvas.grid(column=0, row=2)
 
-	history.configure(text= csvs.replace(",	0",": s").replace(",	1",": d").replace(",	2",": a"))
+	history.configure(text= file2hist(csvs))
 
 def callback(event):
 	clicked()
