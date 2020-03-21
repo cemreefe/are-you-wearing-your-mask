@@ -30,6 +30,7 @@
 - [Dependencies](#dependencies)
 - [Dataset Preparation](#dataset-preparation)
 - [Training and Evaluation](#training-and-evaluation)
+- [Challenges](#challenges)
 - [Future Work](#future-work)
 
 
@@ -77,6 +78,31 @@ The mask classifier script predicts labels for all existing image data and plots
     * For reference, the model I used had 89% accuracy with a balanced confusion matrix
 5. Move your model of choice into `models/` and name it `mask-detector.h5`
 6. Run `mask.classifier.py` to plot the percentage of masked people in the population.
+
+<br>
+
+## Challenges
+
+* **Duplicates**:
+
+Since the algorithm currently used takes input frame by frame and does not do object tracking, a way to identify previously people previously seen by the model and not take them into account. To achieve this we keep recently seen people in memory. If an image similar to one that is recently read is encountered, the image in memory is updated and its age reset. This way in the next frame this image will be similar to the newly extracted image.
+
+![different and similar images by MSE and Imagehash difference]()
+
+To check the similarity, MSE is calculated between the images. We also take the difference between their hashes. We use these two difference measures to split the pairs into three groups: _similar_, _ambigous_ & _different_.
+
+- Similar images are updated and refreshed.
+- Ambigious images are added to recently seen images but not written to a file as a new encounter.
+- Different images are added to recently seen and written to a file as a new encounter.
+
+* **Taxis:**
+
+A lot of taxis were being recognized as people, and when head detection was used in earlier versions to filter out unwanted images from the dataset they passed with high confidence.
+
+So a taxi filter was put into place that checks how much taxi color apparent in an image. If the taxi color abundancy is above the threshold, the taxi filter deletes said image.
+
+![taxi color filter]()
+
 
 <br>
 
