@@ -60,6 +60,7 @@ The mask classifier script predicts labels for all existing image data and plots
 - Tkinter (for the gui annotation tool)
 
 <br>
+
 ## Dataset Preparation
 
 
