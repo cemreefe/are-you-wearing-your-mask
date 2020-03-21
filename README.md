@@ -4,7 +4,7 @@
 
 # Are you wearing your mask?
 
-> The spread of Covid-19 virus has changed mask-wearing habits of many countries around the globe. We will try and track the ratio of mask-wearers in the population with a sample from _İstiklal St._ in Istanbul.
+> The spread of Covid-19 virus has changed mask-wearing habits of many countries around the globe. We will try and track the ratio of mask-wearers in the population of Istanbul with a sample from _İstiklal St._.
 
 <div style="text-align:center"><img src="https://github.com/cemreefe/are-you-wearing-your-mask/blob/master/media/predictions/predictions.png?raw=true" alt="masked or not masked predictions"/></div>
 
