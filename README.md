@@ -1,7 +1,7 @@
 # Are you wearing your mask?
 
 In this project we aim to understand how people's mask usage habits change in Istanbul, during the Covid-19 outbreak. As of 15th of March, the project is still under development and we aim to complete it before the patient count hits 100. 
-(Update, on March 20th, 3:44 AM, the project was completed as Turkey's officially recognized Covid-19 cases rose to 670)
+(**March 20th, 3:44 AM Update**: the project was completed as Turkey's officially recognized Covid-19 cases rose to 670)
 
 ![people detected using opencv](https://github.com/cemreefe/are-you-wearing-your-mask/blob/master/media/collage/collage4.jpg)
 
