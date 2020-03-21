@@ -102,7 +102,7 @@ A lot of taxis were being recognized as people, and when head detection was used
 
 So a taxi filter was put into place that checks how much taxi color apparent in an image. If the taxi color abundancy is above the threshold, the taxi filter deletes said image.
 
-<div style="text-align:center"><img src="https://github.com/cemreefe/are-you-wearing-your-mask/blob/master/media/taxiscore_wide.png?raw=true" alt="taxi color filter"/></div>
+<div style="text-align:center"><img src="https://github.com/cemreefe/are-you-wearing-your-mask/blob/master/media/taxiscore.png?raw=true" alt="taxi color filter"/></div>
 
 <br>
 
