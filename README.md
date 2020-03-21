@@ -1,5 +1,4 @@
-
-![people detected using opencv](https://github.com/cemreefe/are-you-wearing-your-mask/blob/master/media/collage/collage4.jpg?raw=true)
+<div style="text-align:center"><img src="https://github.com/cemreefe/are-you-wearing-your-mask/blob/master/media/collage/collage4.jpg?raw=true" alt="people detected using opencv"/></div>
 
 ***People on İstiklal St. detected by OpenCV***
 
@@ -7,7 +6,7 @@
 
 > The spread of Covid-19 virus has changed mask-wearing habits of many countries around the globe. We will try and track the ratio of mask-wearers in the population with a sample from _İstiklal St._ in Istanbul.
 
-![masked or not predictions](https://github.com/cemreefe/are-you-wearing-your-mask/blob/master/media/predictions/predictions.png?raw=true)
+<div style="text-align:center"><img src="https://github.com/cemreefe/are-you-wearing-your-mask/blob/master/media/predictions/predictions.png?raw=true" alt="masked or not masked predictions"/></div>
 
 ## The aim of this project
 
@@ -87,7 +86,7 @@ The mask classifier script predicts labels for all existing image data and plots
 
 Since the algorithm currently used takes input frame by frame and does not do object tracking, a way to identify previously people previously seen by the model and not take them into account. To achieve this we keep recently seen people in memory. If an image similar to one that is recently read is encountered, the image in memory is updated and its age reset. This way in the next frame this image will be similar to the newly extracted image.
 
-![different and similar images by MSE and Imagehash difference](https://github.com/cemreefe/are-you-wearing-your-mask/blob/master/media/similarity/similarity.png?raw=true)
+<div style="text-align:center"><img src="https://github.com/cemreefe/are-you-wearing-your-mask/blob/master/media/similarity/similarity.png?raw=true" alt="different and similar images by MSE and Imagehash difference"/></div>
 
 To check the similarity, MSE is calculated between the images. We also take the difference between their hashes. We use these two difference measures to split the pairs into three groups: _similar_, _ambigous_ & _different_.
 
@@ -101,8 +100,7 @@ A lot of taxis were being recognized as people, and when head detection was used
 
 So a taxi filter was put into place that checks how much taxi color apparent in an image. If the taxi color abundancy is above the threshold, the taxi filter deletes said image.
 
-![taxi color filter](https://github.com/cemreefe/are-you-wearing-your-mask/blob/master/media/taxiscore_wide.png?raw=true)
-
+<div style="text-align:center"><img src="https://github.com/cemreefe/are-you-wearing-your-mask/blob/master/media/taxiscore_wide.png?raw=true" alt="taxi color filter"/></div>
 
 <br>
 
