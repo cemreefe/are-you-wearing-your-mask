@@ -87,7 +87,7 @@ The mask classifier script predicts labels for all existing image data and plots
 
 Since the algorithm currently used takes input frame by frame and does not do object tracking, a way to identify previously people previously seen by the model and not take them into account. To achieve this we keep recently seen people in memory. If an image similar to one that is recently read is encountered, the image in memory is updated and its age reset. This way in the next frame this image will be similar to the newly extracted image.
 
-![different and similar images by MSE and Imagehash difference]()
+![different and similar images by MSE and Imagehash difference](https://github.com/cemreefe/are-you-wearing-your-mask/blob/master/media/similarity/similarity.png?raw=true)
 
 To check the similarity, MSE is calculated between the images. We also take the difference between their hashes. We use these two difference measures to split the pairs into three groups: _similar_, _ambigous_ & _different_.
 
@@ -101,7 +101,7 @@ A lot of taxis were being recognized as people, and when head detection was used
 
 So a taxi filter was put into place that checks how much taxi color apparent in an image. If the taxi color abundancy is above the threshold, the taxi filter deletes said image.
 
-![taxi color filter]()
+![taxi color filter](https://github.com/cemreefe/are-you-wearing-your-mask/blob/master/media/taxiscore_wide.png?raw=true)
 
 
 <br>
