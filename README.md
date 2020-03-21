@@ -100,7 +100,7 @@ To check the similarity, MSE is calculated between the images. We also take the 
 
 A lot of taxis were being recognized as people, and when head detection was used in earlier versions to filter out unwanted images from the dataset they passed with high confidence.
 
-So a taxi filter was put into place that checks how much taxi color apparent in an image. If the taxi color abundancy is above the threshold, the taxi filter deletes said image.
+So a taxi filter was put into place that checks how much taxi color is apparent in an image. If the taxi color abundancy is above the threshold, the taxi filter deletes said image.
 
 <div style="text-align:center"><img src="https://github.com/cemreefe/are-you-wearing-your-mask/blob/master/media/taxiscore.png?raw=true" alt="taxi color filter"/></div>
 
