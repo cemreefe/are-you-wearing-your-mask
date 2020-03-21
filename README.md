@@ -82,7 +82,9 @@ The mask classifier script predicts labels for all existing image data and plots
 
 ## Challenges
 
-* **Duplicates**:
+Of course there has been a lot of challenges in this projects, but I wanted to list two remarkable problems I needed to solve during this project.
+
+### Duplicates
 
 Since the algorithm currently used takes input frame by frame and does not do object tracking, a way to identify previously people previously seen by the model and not take them into account. To achieve this we keep recently seen people in memory. If an image similar to one that is recently read is encountered, the image in memory is updated and its age reset. This way in the next frame this image will be similar to the newly extracted image.
 
@@ -94,7 +96,7 @@ To check the similarity, MSE is calculated between the images. We also take the 
 - Ambigious images are added to recently seen images but not written to a file as a new encounter.
 - Different images are added to recently seen and written to a file as a new encounter.
 
-* **Taxis:**
+### Yellow taxis as people
 
 A lot of taxis were being recognized as people, and when head detection was used in earlier versions to filter out unwanted images from the dataset they passed with high confidence.
 
