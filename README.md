@@ -23,7 +23,6 @@
 <br>
 
 
----
 
 ## Table of Contents
 
@@ -34,13 +33,10 @@
 - [Future Work](#future work)
 
 
----
-
 <br>
 
 ## Project Description
 
----
 
 In order to track the ratio of people who wear masks in public, we first need a dataset of images of people in public, every day in great quantities. To achieve this we opted to use the live touristic cameras provided by the _Istanbul Metropolitan Municipality_ (İBB). 
 
