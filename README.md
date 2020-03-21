@@ -13,7 +13,7 @@
   - To **track public awareness** and how different events affect mask usage
   - To **demonstrate the pandemic's effect** on everyday life and how it changes over time
   - To learn the basics of **Computer Vision**, and experiment with **CNNs**
-  - To have **something to do during the three-week quarantine period
+  - To have something to do during the three-week quarantine period
   
 > There have also been claims that globalization could be jeopardized by a prolonged global health crisis, as supply chains have been disrupted and reliance on the Chinese economy questioned. 
 [_Wikipedia, Socio-economic impact of the 2019–20 coronavirus pandemic_](https://en.wikipedia.org/wiki/Socio-economic_impact_of_the_2019%E2%80%9320_coronavirus_pandemic)
