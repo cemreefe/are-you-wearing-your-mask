@@ -28,9 +28,9 @@
 
 - [Project Description](#project)
 - [Dependencies](#dependencies)
-- [Dataset Preparation](#dataset preparation)
-- [Training and Evaluation](#training and evaluation)
-- [Future Work](#future work)
+- [Dataset Preparation](#dataset-preparation)
+- [Training and Evaluation](#training-and-evaluation)
+- [Future Work](#future-work)
 
 
 <br>
