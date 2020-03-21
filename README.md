@@ -86,7 +86,7 @@ Of course there has been a lot of challenges in this projects, but I wanted to l
 
 ### Duplicates
 
-Since the algorithm currently used takes input frame by frame and does not do object tracking, a way to identify previously people previously seen by the model and not take them into account. To achieve this we keep recently seen people in memory. If an image similar to one that is recently read is encountered, the image in memory is updated and its age reset. This way in the next frame this image will be similar to the newly extracted image.
+Since the algorithm takes input frame by frame and does not do any sort of object tracking, a way to identify previously people previously seen by the model and not take them into account was needed. To achieve this we keep recently seen people in memory. If an image similar to one that is recently seen is encountered, the image in memory is updated and its age is reset. This way in the next iteration this image will again be similar to its newer version.
 
 <div style="text-align:center"><img src="https://github.com/cemreefe/are-you-wearing-your-mask/blob/master/media/similarity/similarity.png?raw=true" alt="different and similar images by MSE and Imagehash difference"/></div>
 
