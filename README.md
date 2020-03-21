@@ -45,6 +45,7 @@ Feeding the live feed into OpenCV's human detection tool, we were able to extrac
 The image data can then be processed by running `mask-classifier.py` which uses the model trained by using `mask-classifier-training.ipynb`. The training of the model requires labeled software which can be labeled using `gui-annotation-tool.py`. 
 
 The mask classifier script predicts labels for all existing image data and plots the ratio of people wearing masks day by day.
+
 <br>
 
 ## Dependencies
