@@ -53,7 +53,7 @@ canvas = Canvas(window, width = w, height = h-150)
 canvas.pack()	
 
 u=3 
-i=0 
+i=0
 loadinit = 0
 
 #remove last line from string

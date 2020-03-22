@@ -6,6 +6,7 @@
 
 import cv2
 import numpy as np
+import sys
 import time
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -75,36 +76,31 @@ print("Shape after one-hot encoding: ", Y_train.shape)
 # building a linear stack of layers with the sequential model
 model = Sequential()
 # convolutional layer
-model.add(Conv2D(16, kernel_size=(16,16), strides=(1,1), activation='relu', input_shape=(x,y,3)))
+model.add(Conv2D(64, kernel_size=(4,4), strides=(1,1), activation='relu', input_shape=(x,y,3)))
 model.add(Dropout(.2))
 model.add(BatchNormalization())
 
-model.add(Conv2D(8, kernel_size=(8,8), strides=(1,1), activation='relu', input_shape=(x,y,3)))
+model.add(Conv2D(32, kernel_size=(4,4), strides=(1,1), activation='relu', input_shape=(x,y,3)))
 model.add(Dropout(.2))
 model.add(MaxPooling2D(pool_size=(2,2)))
-
-model.add(Conv2D(8, kernel_size=(4,4), strides=(1,1), activation='relu', input_shape=(x,y,3)))
-model.add(Dropout(.2))
-model.add(MaxPooling2D(pool_size=(2,2)))
-
 
 # flatten output of conv
 model.add(Flatten())
 # hidden layer
-#model.add(Dense(8, activation='relu'))
-#model.add(Dropout(.4))
+model.add(Dense(48, activation='relu'))
+model.add(Dropout(.2))
 
 # output layer
 model.add(Dense(2, activation='softmax'))
 
 # compiling the sequential model
-model.compile(loss='binary_crossentropy', metrics=['accuracy'], optimizer='adam')
+model.compile(loss='binary_crossentropy', metrics=['binary_accuracy'], optimizer='adam')
 
 
 # In[6]:
 
-
-model.load_weights("models/mask-detector.h5")
+model_name = sys.argv[1] if len(sys.argv) >= 2 else "mask-detector.h5"
+model.load_weights("models/" + model_name)
 
 
 # In[7]:
@@ -124,7 +120,7 @@ os.chdir("../")
 dates = []
 
 for file in files:
-    date = file[4:] + "/" + file[4:6] + "/" + file[6:]
+    date = file[:4] + "/" + file[4:6] + "/" + file[6:]
     dates.append(date)
 
 
@@ -175,7 +171,7 @@ for i in range(len(files)):
 # In[18]:
 
 
-plt.plot(avg_daily)
+plt.plot(np.array(avg_daily)*100)
 
 # Fake dataset
 ys = [0, 25, 50, 75, 100]
