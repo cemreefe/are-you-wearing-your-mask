@@ -128,6 +128,7 @@ to_be_deleted_dc = []
 
 FNULL = open(os.devnull, 'w')
 
+subprocess.run(["mkdir", "people"])
 timestr = time.strftime("%Y%m%d")
 os.chdir("people/")
 subprocess.run(["mkdir", timestr], stdout=FNULL, stderr=subprocess.STDOUT)

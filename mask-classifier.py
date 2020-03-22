@@ -9,6 +9,7 @@ import numpy as np
 import sys
 import time
 import pandas as pd
+import subprocess
 import matplotlib.pyplot as plt
 import PIL
 from PIL import Image
@@ -76,13 +77,15 @@ print("Shape after one-hot encoding: ", Y_train.shape)
 # building a linear stack of layers with the sequential model
 model = Sequential()
 # convolutional layer
-model.add(Conv2D(64, kernel_size=(4,4), strides=(1,1), activation='relu', input_shape=(x,y,3)))
+model.add(Conv2D(64, kernel_size=(5,5), strides=(1,1), activation='relu', input_shape=(x,y,3)))
+model.add(Dropout(.2))
+model.add(BatchNormalization())
+model.add(MaxPooling2D(pool_size=(2,2)))
+
+model.add(Conv2D(32, kernel_size=(3,3), strides=(1,1), activation='relu', input_shape=(x,y,3)))
 model.add(Dropout(.2))
 model.add(BatchNormalization())
 
-model.add(Conv2D(32, kernel_size=(4,4), strides=(1,1), activation='relu', input_shape=(x,y,3)))
-model.add(Dropout(.2))
-model.add(MaxPooling2D(pool_size=(2,2)))
 
 # flatten output of conv
 model.add(Flatten())
@@ -95,7 +98,6 @@ model.add(Dense(2, activation='softmax'))
 
 # compiling the sequential model
 model.compile(loss='binary_crossentropy', metrics=['binary_accuracy'], optimizer='adam')
-
 
 # In[6]:
 
@@ -186,11 +188,11 @@ plt.ylabel('Mask usage (%)')
 # Create names
 plt.xticks(x_pos, dates)
 
+subprocess.run(["mkdir", "labels"])
 plt.savefig("outputs/mask-usage-until-{}.png".format(files[-1]))
 
-plt.show()
-
 print(avg_daily)
+plt.show()
 
 
 # In[ ]:
