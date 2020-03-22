@@ -4,7 +4,7 @@
 
 # Are you wearing your mask?
 
-> The spread of Covid-19 virus has changed mask-wearing habits of many countries around the globe. We will try and track the ratio of mask-wearers in the population with a sample from _İstiklal St._ in Istanbul.
+> The spread of Covid-19 virus has changed mask-wearing habits of many countries around the globe. We will try and track the ratio of mask-wearers in the population of Istanbul with a sample from _İstiklal St._.
 
 <div style="text-align:center"><img src="https://github.com/cemreefe/are-you-wearing-your-mask/blob/master/media/predictions/predictions.png?raw=true" alt="masked or not masked predictions"/></div>
 
@@ -13,7 +13,7 @@
   - To **track public awareness** and how different events affect mask usage
   - To **demonstrate the pandemic's effect** on everyday life and how it changes over time
   - To learn the basics of **Computer Vision**, and experiment with **CNNs**
-  - To have **something to do during the three-week quarantine period
+  - To have something to do during the three-week quarantine period
   
 > There have also been claims that globalization could be jeopardized by a prolonged global health crisis, as supply chains have been disrupted and reliance on the Chinese economy questioned. 
 [_Wikipedia, Socio-economic impact of the 2019–20 coronavirus pandemic_](https://en.wikipedia.org/wiki/Socio-economic_impact_of_the_2019%E2%80%9320_coronavirus_pandemic)
@@ -86,7 +86,7 @@ Of course there has been a lot of challenges in this projects, but I wanted to l
 
 ### Duplicates
 
-Since the algorithm currently used takes input frame by frame and does not do object tracking, a way to identify previously people previously seen by the model and not take them into account. To achieve this we keep recently seen people in memory. If an image similar to one that is recently read is encountered, the image in memory is updated and its age reset. This way in the next frame this image will be similar to the newly extracted image.
+Since the algorithm takes input frame by frame and does not do any sort of object tracking, a way to identify previously people previously seen by the model and not take them into account was needed. To achieve this we keep recently seen people in memory. If an image similar to one that is recently seen is encountered, the image in memory is updated and its age is reset. This way in the next iteration this image will again be similar to its newer version.
 
 <div style="text-align:center"><img src="https://github.com/cemreefe/are-you-wearing-your-mask/blob/master/media/similarity/similarity.png?raw=true" alt="different and similar images by MSE and Imagehash difference"/></div>
 
@@ -100,7 +100,7 @@ To check the similarity, MSE is calculated between the images. We also take the 
 
 A lot of taxis were being recognized as people, and when head detection was used in earlier versions to filter out unwanted images from the dataset they passed with high confidence.
 
-So a taxi filter was put into place that checks how much taxi color apparent in an image. If the taxi color abundancy is above the threshold, the taxi filter deletes said image.
+So a taxi filter was put into place that checks how much taxi color is apparent in an image. If the taxi color abundancy is above the threshold, the taxi filter deletes said image.
 
 <div style="text-align:center"><img src="https://github.com/cemreefe/are-you-wearing-your-mask/blob/master/media/taxiscore.png?raw=true" alt="taxi color filter"/></div>
 
