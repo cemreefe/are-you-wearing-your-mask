@@ -78,6 +78,12 @@ The mask classifier script predicts labels for all existing image data and plots
 5. Move your model of choice into `models/` and name it `mask-detector.h5`
 6. Run `mask.classifier.py` to plot the percentage of masked people in the population.
 
+<div style="text-align:center">
+<img src="https://github.com/cemreefe/are-you-wearing-your-mask/blob/master/media/sample-output.png?raw=true" alt="mask usage on istiklal until 22nd of march"/>
+
+<p><b><i>Mask usage between Mar 18-22</i></b></p>
+</div>
+
 <br>
 
 ## Challenges
