@@ -71,7 +71,7 @@ The mask classifier script predicts labels for all existing image data and plots
 ## Training and Evaluation
 
 1. Open up `mask-classifier-training.ipynb` and load your labels file
-2. Train as the notebook upsamples the number of masked people (TODO: the ratio should be calculated)
+2. Train as the notebook upsamples the number of masked people to be approximately equal to not masked ones.
 3. Plot training history and pick promising checkpoints.
 4. Inspect their confusion matrices on your test set.
     * For reference, the model I used had 97% accuracy with a satisfying confusion matrix.
