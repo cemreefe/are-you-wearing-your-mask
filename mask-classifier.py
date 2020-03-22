@@ -127,7 +127,7 @@ files.sort()
 for file in files:
     date = file[:4] + "/" + file[4:6] + "/" + file[6:]
     #dates.append(date)
-    dates.append(datetime.datetime.strptime(date, '%Y/%m/%d').strftime('%b %d'))
+    dates.append(datetime.datetime.strptime(date, '%Y/%m/%d').strftime(' %b %d'))
 
 # In[9]:
 
@@ -174,17 +174,28 @@ for i in range(len(files)):
 
 
 # In[18]:
+import matplotlib as mpl
+#mpl.style.use("seaborn")
 
-plt.figure(figsize=(8,6))
-plt.plot(np.array(avg_daily)*100)
+
+color_l, color_h = "deepskyblue", "salmon"
+
+ds = 2
+plt.figure(figsize=(16/ds,10/ds))
+
+plot_data = np.array(avg_daily)*100
+plt.plot(plot_data, color=color_l)
+plt.stackplot(dates, plot_data, 100-plot_data, labels=["Mask", "No Mask"], colors=[color_l, color_h])
+plt.legend(loc='upper left')
+plt.margins(0,0)
+
 plt.xticks(rotation=45)
 
 x_pos = np.arange(len(dates))
- 
-
 # Add title and axis names
-plt.title('Percentage of mask wearers on İstiklâl St.')
-plt.ylabel('Mask usage (%)')
+plt.title('Mask wearing habits on İstiklâl St.\n')
+plt.ylabel('%')
+plt.ylim(0,100)
 
 # Create names
 plt.xticks(x_pos, dates)
