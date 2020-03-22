@@ -8,6 +8,7 @@ import cv2
 import numpy as np
 import sys
 import time
+import datetime
 import pandas as pd
 import subprocess
 import matplotlib.pyplot as plt
@@ -121,10 +122,12 @@ os.chdir("../")
 
 dates = []
 
+files.sort()
+
 for file in files:
     date = file[:4] + "/" + file[4:6] + "/" + file[6:]
-    dates.append(date)
-
+    #dates.append(date)
+    dates.append(datetime.datetime.strptime(date, '%Y/%m/%d').strftime('%b %d'))
 
 # In[9]:
 
@@ -172,17 +175,15 @@ for i in range(len(files)):
 
 # In[18]:
 
-
+plt.figure(figsize=(8,6))
 plt.plot(np.array(avg_daily)*100)
+plt.xticks(rotation=45)
 
-# Fake dataset
-ys = [0, 25, 50, 75, 100]
 x_pos = np.arange(len(dates))
  
 
 # Add title and axis names
 plt.title('Percentage of mask wearers on İstiklâl St.')
-plt.xlabel('Dates')
 plt.ylabel('Mask usage (%)')
 
 # Create names
