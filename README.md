@@ -74,8 +74,8 @@ The mask classifier script predicts labels for all existing image data and plots
 2. Train as the notebook upsamples the number of masked people (TODO: the ratio should be calculated)
 3. Plot training history and pick promising checkpoints.
 4. Inspect their confusion matrices on your test set.
-    * For reference, the model I used had 89% accuracy with a balanced confusion matrix
-5. Move your model of choice into `models/` and name it `mask-detector.h5`
+    * For reference, the model I used had 97% accuracy with a satisfying confusion matrix.
+5. Move your model of choice into `models/` and name it `mask-detector.h5` or pass its name as an argument to `mask.classifier.py`
 6. Run `mask.classifier.py` to plot the percentage of masked people in the population.
 
 <div style="text-align:center">
